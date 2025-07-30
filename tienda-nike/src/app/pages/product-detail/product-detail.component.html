@@ -1,1 +1,27 @@
-<p>product-detail works!</p>
+<!--  Botón “Volver a productos” -->
+<button mat-button routerLink="/productos" class="btn-back">
+  ← Volver a productos
+</button>
+
+<div class="detail-container" *ngIf="product">
+  <div class="image-section">
+    <img [src]="product.imagen" [alt]="product.nombre" />
+  </div>
+  <div class="info-section">
+    <h1>{{ product.nombre }}</h1>
+    <p class="category">{{ product.categoria | uppercase }}</p>
+    <p class="price">${{ product.precio }}</p>
+    <p class="description">{{ product.descripcion }}</p>
+
+    <div class="actions">
+      <label for="talla">Talla:</label>
+      <select id="talla" [(ngModel)]="selectedSize">
+        <option *ngFor="let t of product.tallas" [value]="t">{{ t }}</option>
+      </select>
+
+      <button mat-raised-button class="boton"(click)="addToCart()">
+        Añadir al carrito
+      </button>
+    </div>
+  </div>
+</div>

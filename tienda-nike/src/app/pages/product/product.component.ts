@@ -3,12 +3,13 @@ import { CommonModule } from '@angular/common';
 import { ZAPATOS_DATA } from '../../data/zapatos.data';
 import { Zapato } from '../../models/zapato.model';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 
 @Component({
   selector: 'app-product',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.scss']
 })
