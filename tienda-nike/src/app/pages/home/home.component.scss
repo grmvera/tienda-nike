@@ -78,3 +78,52 @@
     }
   }
 }
+
+// estilos del carrusel de productos
+.productos-titulo {
+  text-align: center;
+  margin-top: 5rem;
+  margin-bottom: 2rem;
+
+  h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #111;
+  }
+}
+
+.shoe-carousel {
+  margin-top: 2rem;
+  padding: 2rem;
+  width: 100%;
+}
+
+.shoe-carousel-img {
+  width: 100%;
+  max-height: 250px;
+  object-fit: contain;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+::ng-deep .owl-nav {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  width: 100%;
+  top: 40%;
+
+  button {
+    background-color: #000;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    border: none;
+  }
+}
