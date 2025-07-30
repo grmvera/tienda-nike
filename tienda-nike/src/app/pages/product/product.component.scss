@@ -1,0 +1,278 @@
+.products-page {
+  display: flex;
+  gap: 1.5rem;
+  padding: 2rem;
+  background: #f5f5f5;
+  .sidebar {
+    flex: 0 0 260px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    .widget {
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+      border-top: 4px solid #e50914; 
+
+      h4 {
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+        color: #333;
+        position: relative;
+
+        &::after {
+          content: '';
+          position: absolute;
+          left: 0;
+          bottom: -0.5rem;
+          width: 40px;
+          height: 3px;
+          background: #e50914;
+          border-radius: 2px;
+        }
+      }
+
+      /* BUSCADOR */
+      &.search {
+        input[type="text"] {
+          width: 100%;
+          padding: 0.6rem 1rem;
+          border: 1px solid #ddd;
+          border-radius: 25px;
+          transition: border 0.2s ease;
+          &:focus {
+            outline: none;
+            border-color: #e50914;
+          }
+        }
+      }
+
+      /* SLIDER */
+      &.price-filter {
+        .slider-wrap {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+
+          input[type="range"] {
+            flex: 1;
+            accent-color: #e50914;
+          }
+        }
+
+        .price-label {
+          margin-top: 0.5rem;
+          font-size: 0.9rem;
+          color: #ff0000;
+        }
+      }
+
+      /* CATEGORÍAS */
+      &.categories {
+        ul {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+
+          li {
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+
+            input[type="checkbox"] {
+              accent-color: #ff0000;
+            }
+
+            label {
+              cursor: pointer;
+              font-size: 0.95rem;
+              color: #ff0000;
+            }
+          }
+        }
+      }
+    }
+  }
+
+//lista de zapatos principal
+  .product-listing {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    .listing-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      .view-toggle {
+        button {
+          background: transparent;
+          border: 2px solid #ccc;
+          padding: 0.5rem;
+          border-radius: 6px;
+          cursor: pointer;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          transition: all 0.2s ease;
+
+          &.active {
+            background: #e50914;
+            border-color: #e50914;
+            color: #fff;
+          }
+          &:hover:not(.active) {
+            border-color: #e50914;
+          }
+        }
+      }
+
+      // orden
+      .sort {
+        select {
+          padding: 0.5rem 0.8rem;
+          border-radius: 6px;
+          border: 1px solid #ccc;
+          transition: border 0.2s;
+          &:focus {
+            outline: none;
+            border-color: #e50914;
+          }
+        }
+      }
+
+      /* conteo */
+      .count {
+        font-size: 0.95rem;
+        color: #666;
+      }
+    }
+
+    /* grid o lista */
+    .products-grid {
+      display: grid;
+      gap: 1.5rem;
+
+      &.grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      }
+
+      &.list {
+        grid-template-columns: 0.5fr;
+      }
+
+      /* tarjeta producto */
+      .product-card {
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.07);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+        &:hover {
+          transform: translateY(-6px);
+          box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* imagen */
+        .image-wrapper {
+          position: relative;
+          width: 100%;
+          padding-top: 75%;
+          background: #fafafa;
+
+          img {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+          }
+        }
+
+        /* info */
+        .info {
+          padding: 1.2rem;
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+
+          h3 {
+            margin: 0 0 0.4rem;
+            font-size: 1.15rem;
+            color: #222;
+          }
+
+          .categoria {
+            font-size: 0.85rem;
+            color: #888;
+            margin-bottom: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: .5px;
+          }
+
+          .precio {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #e50914;
+            margin-bottom: 1rem;
+          }
+
+          .btn-detail {
+            margin-top: auto;
+            background: #e50914;
+            color: #fff;
+            padding: 0.6rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.2s;
+            &:hover {
+              background: #c00;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+//responsive
+@media (max-width: 992px) {
+  .products-page {
+    flex-direction: column;
+    padding: 1rem;
+
+    .sidebar {
+      order: 2;
+      width: 100%;
+    }
+
+    .product-listing {
+      order: 1;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .products-page {
+    padding: 0.5rem;
+  }
+
+  .listing-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .sidebar .widget {
+    padding: 1rem;
+  }
+}

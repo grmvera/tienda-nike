@@ -7,6 +7,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterOutlet } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -20,6 +21,7 @@ import { RouterOutlet } from '@angular/router';
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,
+    FormsModule
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
