@@ -1,1 +1,54 @@
-<p>cart works!</p>
+<section class="cart-page">
+  <h2>Tu Carrito</h2>
+  <p>Revisa los productos que has agregado a tu carrito antes de finalizar la compra.</p>
+
+  <table *ngIf="cart.length; else emptyTpl" class="cart-table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Producto</th>
+        <th>Precio</th>
+        <th>Cantidad</th>
+        <th>Subtotal</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of cart">
+        <td class="remove">
+          <button (click)="remove(item)">×</button>
+        </td>
+        <td class="product">
+          <img [src]="item.imagen" [alt]="item.nombre" />
+          <div class="info">
+            <div class="name">{{ item.nombre }}</div>
+            <div class="size">Talla: {{ item.selectedSize }}</div>
+          </div>
+        </td>
+        <td class="price">${{ item.precio }}</td>
+        <td class="qty">
+          <button (click)="decrease(item)">–</button>
+          <span>{{ item.quantity }}</span>
+          <button (click)="increase(item)">+</button>
+        </td>
+        <td class="sub">${{ item.precio * item.quantity }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <ng-template #emptyTpl>
+    <p class="empty">Tu carrito está vacío.</p>
+    <a routerLink="/productos" class="btn-back">Seguir comprando</a>
+  </ng-template>
+
+  <div *ngIf="cart.length" class="totals">
+    <div class="line">
+      <span>Subtotal</span>
+      <span class="amount">${{ subtotal }}</span>
+    </div>
+    <div class="line total">
+      <span>Total</span>
+      <span class="amount">${{ total }}</span>
+    </div>
+    <button class="btn-checkout">Finalizar Compra</button>
+  </div>
+</section>
