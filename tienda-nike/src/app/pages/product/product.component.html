@@ -1,0 +1,76 @@
+<section class="products-page">
+  <aside class="sidebar">
+    <!-- buscador -->
+    <div class="widget">
+      <input type="text" placeholder="Buscar..." [(ngModel)]="searchTerm" />
+    </div>
+
+    <!-- filtro precio -->
+    <div class="widget">
+      <h4>Filtro de Precio</h4>
+      <div class="slider-wrap">
+        <input type="range" [min]="priceMin" [max]="priceMax" [(ngModel)]="priceRange[0]" />
+        <input type="range" [min]="priceMin" [max]="priceMax" [(ngModel)]="priceRange[1]" />
+      </div>
+      <p>Precio: {{ priceRange[0] }} — {{ priceRange[1] }}</p>
+    </div>
+
+    <!-- categoria -->
+    <div class="widget">
+      <h4>Categorías</h4>
+      <ul class="categories">
+        <li *ngFor="let cat of categories">
+          <label>
+            <input type="checkbox" (change)="toggleCategory(cat)" />
+            {{ cat }}
+          </label>
+        </li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="product-listing">
+    <div class="listing-header">
+      <!-- tipo de vista -->
+      <div class="view-toggle">
+        <button (click)="viewMode = 'grid'" [class.active]="viewMode === 'grid'">
+          <i class="fa fa-th"></i>
+        </button>
+        <button (click)="viewMode = 'list'" [class.active]="viewMode === 'list'">
+          <i class="fa fa-list"></i>
+        </button>
+      </div>
+
+      <!-- ordenamiento -->
+      <div class="sort">
+        <select [(ngModel)]="sortOption">
+          <option value="default">Orden predeterminado</option>
+          <option value="priceAsc">Precio: bajo a alto</option>
+          <option value="priceDesc">Precio: alto a bajo</option>
+        </select>
+      </div>
+
+      <!-- contador -->
+      <div class="count">
+        {{ filteredZapatos.length }} / {{ zapatos.length }} productos
+      </div>
+    </div>
+
+    <!-- lista de productos -->
+    <div class="products-grid" [ngClass]="viewMode">
+      <div class="product-card" *ngFor="let zap of filteredZapatos">
+        <div class="image-wrapper">
+          <img [src]="zap.imagen" [alt]="zap.nombre" />
+        </div>
+        <div class="info">
+          <h3>{{ zap.nombre }}</h3>
+          <p class="categoria">{{ zap.categoria }}</p>
+          <p class="precio">${{ zap.precio }}</p>
+          <button mat-button color="primary" [routerLink]="['/producto', zap.id]" class="btn-detail">
+            Ver
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+</section>

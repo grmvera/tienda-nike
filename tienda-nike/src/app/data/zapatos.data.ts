@@ -91,5 +91,15 @@ export const ZAPATOS_DATA: Zapato[] = [
     colores: ['blanco', 'negro'],
     tallas: [38, 39, 40, 41, 42],
     categoria: 'Hombre'
+  },
+  {
+    id: 10,
+    nombre: 'Nike Air Force Supreme',
+    descripcion: 'Inspiradas en el estilo urbano.',
+    precio: 190,
+    imagen: 'assets/img/sinfondo.png',
+    colores: ['blanco'],
+    tallas: [38, 39, 40, 41, 42],
+    categoria: 'Hombre'
   }
 ];
