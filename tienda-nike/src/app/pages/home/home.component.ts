@@ -3,11 +3,12 @@ import { Component } from '@angular/core';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { Zapato } from '../../models/zapato.model';
 import { ZAPATOS_DATA } from '../../data/zapatos.data';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CarouselModule, CommonModule],
+  imports: [CarouselModule, CommonModule, RouterModule],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })

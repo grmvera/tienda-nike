@@ -1,6 +1,6 @@
 <mat-toolbar class="navbar">
   <div class="navbar-left">
-    <img src="assets/img/logo-nike.png" alt="Nike Logo" class="logo-img" />
+    <img src="assets/img/logo-nike.png" alt="Nike Logo" class="logo-img"/>
   </div>
 
   <div class="navbar-right">
@@ -8,12 +8,11 @@
       <mat-icon>home</mat-icon> Inicio
     </button>
     <button mat-button [routerLink]="['/productos']">
-      <mat-icon>storefront</mat-icon>
-      Productos
+      <mat-icon>storefront</mat-icon> Productos
     </button>
     <button mat-button routerLink="/carrito">
       <mat-icon>shopping_cart</mat-icon>
-      <span class="cart-count">0</span>
+      <span class="cart-count">{{ cartCount }}</span>
     </button>
     <button mat-icon-button>
       <mat-icon>person</mat-icon>

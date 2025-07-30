@@ -5,12 +5,13 @@ import { ZAPATOS_DATA } from '../../data/zapatos.data';
 import { Zapato } from '../../models/zapato.model';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 @Component({
   selector: 'app-product-detail',
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule, MatButtonModule],
+  imports: [CommonModule, RouterModule, FormsModule, MatButtonModule, MatSnackBarModule],
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.scss']
 })
@@ -18,7 +19,7 @@ export class ProductDetailComponent {
   product!: Zapato;
   selectedSize!: number;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     const id = Number(this.route.snapshot.paramMap.get('id'));
@@ -48,7 +49,9 @@ export class ProductDetailComponent {
 
     localStorage.setItem('cart', JSON.stringify(cart));
 
-    console.log('Carrito actualizado:', cart);
+    this.snackBar.open('✅ Producto agregado al carrito', '', {
+      duration: 2000
+    });
   }
 
 }
