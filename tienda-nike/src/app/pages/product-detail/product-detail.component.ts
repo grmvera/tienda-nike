@@ -18,17 +18,37 @@ export class ProductDetailComponent {
   product!: Zapato;
   selectedSize!: number;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.product = ZAPATOS_DATA.find(p => p.id === id)!;
-    // inicializamos el select de tallas
     this.selectedSize = this.product.tallas[0];
   }
 
   addToCart() {
-    console.log('Añadido al carrito', this.product, 'Talla:', this.selectedSize);
-    // ... aquí tu lógica real de carrito
+    const stored = localStorage.getItem('cart');
+    const cart: Array<Zapato & { selectedSize: number; quantity: number }> =
+      stored ? JSON.parse(stored) : [];
+
+    const existing = cart.find(item =>
+      item.id === this.product.id &&
+      item.selectedSize === this.selectedSize
+    );
+
+    if (existing) {
+      existing.quantity++;
+    } else {
+      cart.push({
+        ...this.product,
+        selectedSize: this.selectedSize,
+        quantity: 1
+      });
+    }
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+
+    console.log('Carrito actualizado:', cart);
   }
+
 }
