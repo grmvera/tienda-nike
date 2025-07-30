@@ -1,8 +1,59 @@
-.logo {
-  font-weight: bold;
-  font-size: 20px;
-}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 0 16px;
+  color: #000;
 
-.spacer {
-  flex: 1 1 auto;
+  .navbar-left {
+    display: flex;
+    align-items: center;
+
+    .logo-img {
+      width: 40px;
+      margin-right: 8px;
+    }
+
+    .logo-text {
+      font-weight: bold;
+      font-size: 22px;
+      font-family: 'Roboto', sans-serif;
+    }
+  }
+
+  .navbar-center {
+    flex: 1;
+    padding: 0 20px;
+
+    .search-field {
+      width: 100%;
+      background-color: #f4f4f4;
+      border-radius: 8px;
+
+      input {
+        font-size: 14px;
+      }
+    }
+  }
+
+  .navbar-right {
+    display: flex;
+    align-items: center;
+
+    button {
+      margin-left: 10px;
+      font-weight: 500;
+    }
+
+    .cart-count {
+      background-color: red;
+      color: white;
+      border-radius: 50%;
+      padding: 2px 6px;
+      margin-left: 4px;
+      font-size: 12px;
+    }
+  }
 }
