@@ -9,5 +9,9 @@ export const routes: Routes = [
       .then(m => m.ProductComponent)
   },
   { path: 'producto/:id', component: ProductDetailComponent },
+  { path: 'carrito',
+    loadComponent: () => import('./pages/cart/cart.component')
+      .then(m => m.CartComponent)
+  },
   { path: '**', redirectTo: '' }
 ];
