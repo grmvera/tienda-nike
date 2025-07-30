@@ -17,14 +17,21 @@ export class HomeComponent {
   customOptions = {
     loop: true,
     autoplay: true,
-    autoplayTimeout: 3000,
-    dots: true,
+    autoplayTimeout: 2500,
+    autoplayHoverPause: true,
+    dots: false,
     nav: true,
+    navText: ['<', '>'],
     responsive: {
-      0: { items: 1 },
-      600: { items: 2 },
-      1000: { items: 3 }
+      0: {
+        items: 1
+      },
+      600: {
+        items: 2
+      },
+      1000: {
+        items: 3
+      }
     }
   };
-
 }

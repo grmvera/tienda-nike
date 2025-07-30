@@ -1,13 +1,15 @@
+// Estilos del banner
 .nike-banner {
   position: relative;
   background: linear-gradient(135deg, #000 60%, #e50914 40%);
   color: white;
-  height: 500px;
+  min-height: 500px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 2rem 4rem;
   overflow: hidden;
+  flex-wrap: wrap;
 
   .text-overlay {
     position: relative;
@@ -32,8 +34,8 @@
       font-size: 5rem;
       font-weight: 700;
       color: #fff;
-      position: relative;
       margin: 0;
+      position: relative;
       z-index: 3;
     }
 
@@ -51,11 +53,10 @@
       color: #111;
       border: none;
       padding: 0.8rem 1.6rem;
-      font-weight: 50;
+      font-weight: 500;
       border-radius: 0.5rem;
       cursor: pointer;
       transition: 0.3s ease;
-      ;
 
       &:hover {
         background-color: #e50914;
@@ -75,27 +76,29 @@
       height: 400px;
       transform: rotate(-15deg);
       filter: drop-shadow(0 10px 10px rgba(0, 0, 0, 0.6));
+      max-width: 100%;
     }
   }
 }
 
-// estilos del carrusel de productos
-.productos-titulo {
+// Sección del carrusel
+.carousel-section {
   text-align: center;
-  margin-top: 5rem;
-  margin-bottom: 2rem;
+  margin-top: 6rem;
+  padding: 0 1rem;
 
-  h2 {
+  .carousel-title {
     font-size: 2.5rem;
     font-weight: bold;
     color: #111;
+    margin-bottom: 2rem;
   }
-}
 
-.shoe-carousel {
-  margin-top: 2rem;
-  padding: 2rem;
-  width: 100%;
+  .carousel-wrapper {
+    max-width: 1100px;
+    margin: auto;
+    padding: 0 1rem;
+  }
 }
 
 .shoe-carousel-img {
@@ -111,6 +114,7 @@
   }
 }
 
+// Navegación del carrusel
 ::ng-deep .owl-nav {
   display: flex;
   justify-content: space-between;
@@ -125,5 +129,67 @@
     border-radius: 50%;
     font-size: 1.5rem;
     border: none;
+
+    &:hover {
+      background-color: #e50914;
+    }
+  }
+}
+
+// Responsive
+@media screen and (max-width: 768px) {
+  .nike-banner {
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem 1rem;
+    text-align: center;
+
+    .text-overlay {
+      max-width: 100%;
+
+      .brand-text {
+        font-size: 8rem;
+        top: 5px;
+        left: 10px;
+      }
+
+      .model-text {
+        font-size: 2.5rem;
+      }
+
+      .slogan {
+        font-size: 0.95rem;
+      }
+    }
+
+    .shoe-image {
+      position: static;
+      margin-top: 2rem;
+      display: flex;
+      justify-content: center;
+
+      img {
+        height: 200px;
+        transform: none;
+      }
+    }
+  }
+
+  .carousel-section {
+    .carousel-title {
+      font-size: 1.8rem;
+    }
+
+    .carousel-wrapper {
+      padding: 0;
+    }
+  }
+
+  ::ng-deep .owl-nav {
+    top: 35%;
+    button {
+      padding: 0.3rem 0.8rem;
+      font-size: 1.2rem;
+    }
   }
 }
